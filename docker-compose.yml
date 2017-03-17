@@ -114,8 +114,8 @@ services:
         volumes:
             - ./logs/apache2:/var/log/apache2
         ports:
-            - "$SERVER_PORT:80"
-            - "$SERVER_SSL_PORT:443"
+            - "${SERVER_PORT}:80"
+            - "${SERVER_SSL_PORT}:443"
         links:
             - php-fpm
 
@@ -136,14 +136,14 @@ services:
         build:
             context: ./mysql
             args:
-                - MYSQL_DATABASE=$DB_DATABASE
-                - MYSQL_USER=$DB_USERNAME
-                - MYSQL_PASSWORD=$DB_PASSWORD
+                - MYSQL_DATABASE=${DB_DATABASE}
+                - MYSQL_USER=${DB_USERNAME}
+                - MYSQL_PASSWORD=${DB_PASSWORD}
                 - MYSQL_ROOT_PASSWORD=root
         volumes:
             - mysql:/var/lib/mysql
         ports:
-            - "$DB_PORT:3306"
+            - "${DB_PORT}:3306"
 
 ### MariaDB Container #######################################
 
