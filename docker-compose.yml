@@ -82,7 +82,7 @@ services:
             dockerfile: Dockerfile-70 # or Dockerfile-56, choose your PHP-FPM container setting
         volumes_from:
             - applications
-        command: php artisan queue:work
+        command: php artisan queue:work --daemon
 
 ### Nginx Server Container ##################################
 
