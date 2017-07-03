@@ -20,7 +20,7 @@ services:
                 - INSTALL_SOAP=false
                 - INSTALL_MONGO=false
                 - INSTALL_NODE=true
-                - INSTALL_YARN=false
+                - INSTALL_YARN=true
                 - INSTALL_DRUSH=false
                 - INSTALL_AEROSPIKE_EXTENSION=false
                 - INSTALL_V8JS_EXTENSION=false
@@ -38,7 +38,7 @@ services:
             - applications
         extra_hosts:
             # IMPORTANT: Replace with your Docker Host IP (will be appended to /etc/hosts)
-            - "dockerhost:10.0.75.1"
+            - "dockerhost:${DOCKER_HOST_IP}"
         ports:
            - "2222:22"
         tty: true
@@ -69,20 +69,22 @@ services:
             - workspace
         extra_hosts:
             # IMPORTANT: Replace with your Docker Host IP (will be appended to /etc/hosts)
-            - "dockerhost:10.0.75.1"
+            - "dockerhost:${DOCKER_HOST_IP}"
         environment:
             # IMPORTANT: Set the Remote Interpreter entry matching name to `laravel`
             - PHP_IDE_CONFIG=serverName=laravel
 
-### PHP-WORKER Container #######################################
+### PHP Worker Container #####################################
 
     php-worker:
-        build:
-            context: ./php-fpm
-            dockerfile: Dockerfile-70 # or Dockerfile-56, choose your PHP-FPM container setting
-        volumes_from:
-            - applications
-        command: php artisan queue:work --daemon
+      build:
+        context: ./php-worker
+      volumes_from:
+        - applications
+      depends_on:
+        - workspace
+      extra_hosts:
+        - "dockerhost:${DOCKER_HOST_IP}"
 
 ### Nginx Server Container ##################################
 
