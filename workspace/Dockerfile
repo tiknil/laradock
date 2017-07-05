@@ -47,7 +47,6 @@ ARG PGID=1000
 RUN groupadd -g $PGID laradock && \
     useradd -u $PUID -g laradock -m laradock
 
-
 #####################################
 # SOAP:
 #####################################
@@ -375,6 +374,13 @@ RUN if [ ${INSTALL_LINUXBREW} = true ]; then \
 ;fi
 
 #
+# Prepare ./init.sh
+#
+
+COPY ./init.sh /home/laradock/init.sh
+RUN chmod +x /home/laradock/init.sh
+
+#
 #--------------------------------------------------------------------------
 # Final Touch
 #--------------------------------------------------------------------------
@@ -384,9 +390,6 @@ RUN if [ ${INSTALL_LINUXBREW} = true ]; then \
 USER root
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-COPY ./init.sh /var/www/init.sh
-RUN chmod +x /var/www/init.sh
 
 # Set default work directory
 WORKDIR /var/www
