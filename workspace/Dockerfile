@@ -374,13 +374,6 @@ RUN if [ ${INSTALL_LINUXBREW} = true ]; then \
 ;fi
 
 #
-# Prepare ./init.sh
-#
-
-COPY ./init.sh /var/www/init.sh
-RUN chmod +x /var/www/init.sh
-
-#
 #--------------------------------------------------------------------------
 # Final Touch
 #--------------------------------------------------------------------------
