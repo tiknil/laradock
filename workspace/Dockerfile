@@ -385,5 +385,8 @@ USER root
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+COPY ./init.sh /var/www/init.sh
+RUN chmod +x /var/www/init.sh
+
 # Set default work directory
 WORKDIR /var/www
