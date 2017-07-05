@@ -377,8 +377,8 @@ RUN if [ ${INSTALL_LINUXBREW} = true ]; then \
 # Prepare ./init.sh
 #
 
-COPY ./init.sh /home/laradock/init.sh
-RUN chmod +x /home/laradock/init.sh
+COPY ./init.sh /var/www/init.sh
+RUN chmod +x /var/www/init.sh
 
 #
 #--------------------------------------------------------------------------
