@@ -18,4 +18,6 @@ echo $PATH
 which yarn
 which node
 
+composer install
 yarn
+php artisan key:generate
