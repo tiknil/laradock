@@ -10,7 +10,7 @@ ENV WEB_DOCUMENT_ROOT=/var/www/public
 
 EXPOSE 80 443
 
-#WORKDIR /var/www/public
+WORKDIR /var/www/public
 
 ENTRYPOINT ["/opt/docker/bin/entrypoint.sh"]
 
