@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+
+  apache2:
+    restart: always
+
+  php-worker:
+    restart: always
+
+
