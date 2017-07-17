@@ -384,9 +384,5 @@ USER root
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Add the composer.json
-COPY ./init.sh /home/laradock/init.sh
-RUN chmod +x /home/laradock/init.sh
-
 # Set default work directory
 WORKDIR /var/www

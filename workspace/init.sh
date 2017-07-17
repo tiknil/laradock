@@ -9,8 +9,8 @@ if [[ $PATH != */home/laradock/.yarn/bin* ]];then
     export PATH=/home/laradock/.yarn/bin:$PATH
 fi
 
-if [[ $PATH != */home/laradock/.nvm/versions/node/v8.1.3/bin* ]];then
-    export PATH=/home/laradock/.nvm/versions/node/v8.1.3/bin:$PATH
+if [[ $PATH != */home/laradock/.nvm/versions/node/v8.1.4/bin* ]];then
+    export PATH=/home/laradock/.nvm/versions/node/v8.1.4/bin:$PATH
 fi
 
 echo $PATH
